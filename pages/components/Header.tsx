@@ -1,9 +1,24 @@
 import Image from 'next/image';
 import React from 'react';
+import {
+  Bars3Icon,
+  ChevronDownIcon,
+  HomeIcon,
+  MagnifyingGlassIcon,
+} from '@heroicons/react/24/solid';
+import {
+  BellIcon,
+  GlobeAltIcon,
+  PlusIcon,
+  SparklesIcon,
+  SpeakerWaveIcon,
+  VideoCameraIcon,
+  ChatBubbleBottomCenterIcon,
+} from '@heroicons/react/24/outline';
 
 function Header() {
   return (
-    <div>
+    <div className="flex shadow-sm px-4 py-2 bg-white sticky top-0 z-40">
       <div className="relative w-20 h-10">
         <Image
           className="object-contain"
@@ -13,6 +28,44 @@ function Header() {
           fill
           alt="Reddit Logo"
         />
+      </div>
+      <div className=" mx-7 flex items-center space-x-2 xl:min-w-[300px]">
+        <HomeIcon className="h-4 w-4" />
+        <p className="ml-2 hidden flex-1 lg:inline">Home</p>
+        <ChevronDownIcon className="h-4 w-4" />
+      </div>
+      <form className="flex items-center space-x-2 border rounded-lg px-4 border-gray-200 bg-gray-100 py-1 flex-1">
+        <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
+        <input
+          type="text"
+          placeholder="Search Reddit"
+          className="bg-transparent flex-1 outline-none"
+        />
+        <button type="submit" hidden></button>
+      </form>
+      <div className="flex items-center space-x-1 ml-1 hidden lg:inline-flex">
+        <BellIcon className="icon" />
+        <ChatBubbleBottomCenterIcon className="icon" />
+        <PlusIcon className="icon" />
+        <hr className="h-6 border border-gray-300" />
+        <SparklesIcon className="icon" />
+        <SpeakerWaveIcon className="icon" />
+        <VideoCameraIcon className="icon" />
+        <GlobeAltIcon className="icon" />
+      </div>
+      <div className="flex items-center ml-2 font-bold lg:hidden">
+        <Bars3Icon className="icon" />
+      </div>
+      <div className="ml-4 items-center space-x-2 hidden cursor-pointer lg:flex">
+        <div className="relative h-6 w-6 flex-shrink-0">
+          <Image
+            className="bg-gray-200 rounded-full cursor-pointer"
+            alt="User Avatar"
+            src="data:image/png;base64,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"
+            fill
+          />
+        </div>
+        <p className="text-gray-500">Sign In</p>
       </div>
     </div>
   );
